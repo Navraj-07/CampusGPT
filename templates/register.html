@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Create Account — CampusGPT{% endblock %}
+{% block body_class %}auth-page{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center align-items-center min-vh-75">
+    <div class="col-md-8 col-lg-5">
+      <div class="card auth-card border-0 shadow-lg">
+        <div class="card-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <div class="auth-icon mx-auto mb-3">
+              <i class="bi bi-journal-bookmark-fill"></i>
+            </div>
+            <h1 class="h3 fw-bold mb-1">Create Your Academic Account</h1>
+            <p class="text-muted small mb-0">
+              Upload course PDFs, query lecture notes, and generate quizzes &amp; viva prep
+            </p>
+          </div>
+
+          <form method="POST" action="{{ url_for('register') }}" novalidate>
+            <div class="mb-3">
+              <label for="full_name" class="form-label fw-semibold">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="full_name"
+                name="full_name"
+                placeholder="e.g., Aarav Sharma"
+                value="{{ full_name or '' }}"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="username" class="form-label fw-semibold">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                placeholder="e.g., aarav_cs26"
+                value="{{ username or '' }}"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">University Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="aarav@university.edu"
+                value="{{ email or '' }}"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="password" class="form-label fw-semibold">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Minimum 6 characters"
+                minlength="6"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+              <i class="bi bi-person-plus-fill me-1"></i> Register &amp; Open Workspace
+            </button>
+          </form>
+
+          <hr class="my-4" />
+          <p class="text-center text-muted small mb-0">
+            Already have an account?
+            <a href="{{ url_for('login') }}" class="fw-semibold text-decoration-none">Sign in here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
